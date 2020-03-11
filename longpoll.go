@@ -21,6 +21,7 @@ type Attachment struct {
 type Message struct {
 	FromID      int
 	PeerID      int
+        MessageID   int
 	Text        string
 	Payload     string
 	ChatID      int
@@ -37,6 +38,7 @@ type LongpollEvent struct {
 	FromID      int        `json:"from_id"`
 	Out         int          `json:"out"`
 	PeerID      int        `json:"peer_id"`
+        MessageID   int          `json:"message_id"`
 	Text        string       `json:"text"`
 	Payload     string       `json:"Payload"`
 	Attachments []Attachment `json:"attachments"`
@@ -112,6 +114,7 @@ func (lp *Longpoll) Listen(inputMessages chan<- *Message) {
 				FromID:      event.FromID,
 				PeerID:      event.PeerID,
 				Text:        event.Text,
+				MessageID:   event.MessageID,
 				Payload:     event.Payload,
 				Attachments: event.Attachments,
 			}
