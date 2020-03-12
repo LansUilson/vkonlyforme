@@ -86,7 +86,7 @@ func (lp *Longpoll) getEvents() (longpollResponse, error) {
 
 	answer, err := ioutil.ReadAll(r.Body)
 	CheckError(err)
-
+        fmt.Println(answer) 
 	response := longpollResponse{}
 	err = json.Unmarshal(answer, &response)
 	CheckError(err)
