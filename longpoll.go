@@ -18,6 +18,12 @@ type Attachment struct {
 	Type string `json:"type"`
 }
 
+type FwdMessages struct {
+    FromID      int           `json:"from_id"`
+    Text        string        `json:"text"`
+    Attachments []Attachment  `json:"attachments"` 
+} 
+
 type Message struct {
 	FromID      int
 	PeerID      int
@@ -27,7 +33,7 @@ type Message struct {
 	ChatID      int
 	CMessageID  int
         MessageType string
-	FwdMessages []FwdMessage
+	FwdMessages []FwdMessages
 	Out	    int
 	Attachments []Attachment
 }
@@ -47,7 +53,7 @@ type LongpollEvent struct {
 	Payload     string       `json:"Payload"`
 	CMessageID  int		 `json:"conversation_message_id"`
         MessageType string	 `json:"type"`
-	FwdMessages []FwdMessage `json:"fwd_messages"`
+	FwdMessages []FwdMessages `json:"fwd_messages"`
 	Attachments []Attachment `json:"attachments"`
 }
 
