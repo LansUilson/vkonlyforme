@@ -24,6 +24,13 @@ type FwdMessages struct {
     Attachments []Attachment  `json:"attachments"` 
 } 
 
+type ReplyMessage struct {
+    FromID      int           `json:"from_id"`
+    Text        string        `json:"text"`
+    Attachments []Attachment  `json:"attachments"` 
+    MessageID   int           `json:"id"`
+}
+
 type Message struct {
 	FromID      int
 	PeerID      int
