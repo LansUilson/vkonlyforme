@@ -140,7 +140,7 @@ func (lp *Longpoll) Listen(inputMessages chan<- *Message) {
 				Out:	      event.Out,
 				CMessageID:   event.CMessageID, 
 				MessageType:  event.MessageType,
-				FwdMessages:  []byte(event.FwdMessages),
+				FwdMessages:  event.FwdMessages,
 				ReplyMessage: event.ReplyMessage,
 				Attachments:  event.Attachments,
 			}
