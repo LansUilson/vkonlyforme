@@ -25,6 +25,11 @@ type Message struct {
 	Text        string
 	Payload     string
 	ChatID      int
+	CMessageID  int
+        MessageType string
+	FwdMessages []FwdMessages
+	ReplyMessage
+	Out	    int
 	Attachments []Attachment
 }
 
@@ -41,6 +46,10 @@ type LongpollEvent struct {
         MessageID   int          `json:"message_id"`
 	Text        string       `json:"text"`
 	Payload     string       `json:"Payload"`
+	CMessageID  int		 `json:"conversation_message_id"`
+        MessageType string	 `json:"type"`
+	FwdMessages []FwdMessages `json:"fwd_messages"`
+	ReplyMessage		 `json:"reply_message"`
 	Attachments []Attachment `json:"attachments"`
 }
 
@@ -111,14 +120,18 @@ func (lp *Longpoll) Listen(inputMessages chan<- *Message) {
 			}
 
 			message := Message{
-				FromID:      event.FromID,
-				PeerID:      event.PeerID,
-				Text:        event.Text,
-				MessageID:   event.MessageID,
-				Payload:     event.Payload,
-				Attachments: event.Attachments,
+				FromID:       event.FromID,
+				PeerID:       event.PeerID,
+				Text:         event.Text,
+				MessageID:    event.MessageID,
+				Payload:      event.Payload,
+				Out:	      event.Out,
+				CMessageID:   event.CMessageID, 
+				MessageType:  event.MessageType,
+				FwdMessages:  event.FwdMessages,
+				ReplyMessage: event.ReplyMessage,
+				Attachments:  event.Attachments,
 			}
-
 			if event.FromID == event.PeerID {
 				message.ChatID = 0
 			} else {
