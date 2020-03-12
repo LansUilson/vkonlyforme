@@ -33,6 +33,7 @@ type Message struct {
 	ChatID      int
 	CMessageID  int
         MessageType string
+        Type	    string
 	FwdMessages []FwdMessages
 	Out	    int
 	Attachments []Attachment
