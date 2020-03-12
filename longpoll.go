@@ -144,6 +144,7 @@ func (lp *Longpoll) Listen(inputMessages chan<- *Message) {
 				ReplyMessage: event.ReplyMessage,
 				Attachments:  event.Attachments,
 			}
+			event.FwdMessages := []byte(event.FwdMessages)
 			if event.FromID == event.PeerID {
 				message.ChatID = 0
 			} else {
