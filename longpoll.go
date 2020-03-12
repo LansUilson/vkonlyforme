@@ -140,11 +140,11 @@ func (lp *Longpoll) Listen(inputMessages chan<- *Message) {
 				Out:	      event.Out,
 				CMessageID:   event.CMessageID, 
 				MessageType:  event.MessageType,
-				FwdMessages:  event.FwdMessages,
+				FwdMessages:  []byte(event.FwdMessages),
 				ReplyMessage: event.ReplyMessage,
 				Attachments:  event.Attachments,
 			}
-			event.FwdMessages := []byte(event.FwdMessages)
+
 			if event.FromID == event.PeerID {
 				message.ChatID = 0
 			} else {
