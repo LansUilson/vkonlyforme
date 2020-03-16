@@ -65,7 +65,7 @@ type keyboard struct {
 	Cache       string     `json:"-"`
 }
 
-func Keyboard(inLine bool, oneTime bool, buttonsGrid [][]Button) *keyboard {
+func Keyboard(inLine bool, buttonsGrid [][]Button) *keyboard {
 	return &keyboard{InLine: inLine, ButtonsGrid: buttonsGrid}
 }
 
