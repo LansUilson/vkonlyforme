@@ -61,12 +61,13 @@ func MakeButton(name, payload, color string) Button {
 
 type keyboard struct {
 	InLine      bool       `json:"inline"`
+	OneTime     bool       `json:"one_time"`
 	ButtonsGrid [][]Button `json:"buttons"`
 	Cache       string     `json:"-"`
 }
 
-func Keyboard(inLine bool, buttonsGrid [][]Button) *keyboard {
-	return &keyboard{InLine: inLine, ButtonsGrid: buttonsGrid}
+func Keyboard(inLine bool, oneTime bool, buttonsGrid [][]Button) *keyboard {
+	return &keyboard{InLine: inLine, OneTime: oneTime, ButtonsGrid: buttonsGrid}
 }
 
 func (kb *keyboard) String() string {
