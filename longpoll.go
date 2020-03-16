@@ -40,7 +40,7 @@ type Message struct {
 	ChatID      int
 	CMessageID  int
         MessageType string 
-	FwdMessages FwdMessages
+	FwdMessages []FwdMessages
 	Out	    int
         ReplyMessage 
 	Attachments []Attachment
@@ -62,7 +62,7 @@ type LongpollEvent struct {
 	CMessageID  int		 `json:"conversation_message_id"`
         MessageType string	 `json:"type"`
 	ReplyMessage		 `json:"reply_message"`
-	FwdMessages FwdMessages `json:"fwd_messages"`
+	FwdMessages []FwdMessages `json:"fwd_messages"`
 	Attachments []Attachment `json:"attachments"`
 }
 
